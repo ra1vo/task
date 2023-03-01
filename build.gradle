@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext{
+    springVersion = '5.3.23'
+    cucumberVersion = '7.9.0'
+}
+
+dependencies {
+    implementation 'net.datafaker:datafaker:1.6.0'
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation group: 'org.springframework', name: 'spring-context', version: '5.3.23'
+    testImplementation group: 'org.springframework', name: 'spring-test', version: '5.3.23'
+    testImplementation 'com.google.code.gson:gson:2.10'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.9.0'
+    testImplementation group: 'io.rest-assured', name: 'rest-assured', version: '5.2.0'
+    testImplementation 'io.cucumber:cucumber-spring:7.9.0'
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite', version: '1.9.1'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-engine', version: '1.9.1'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-suite-engine', version: '1.9.1'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom implementation
+    }
+}
