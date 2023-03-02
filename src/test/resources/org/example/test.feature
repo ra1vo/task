@@ -1,7 +1,7 @@
 Feature: Contact endpoint accept data
 
   Scenario: csv data from file is sent to endpoint succesfully
-    Given csv file with 1 persons is created
+    Given csv file with 5 persons is created
     When each csv row is sent to contacts endpoint
     Then each response code is 201
 
